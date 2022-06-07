@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components'
+
+const Father = styled.div`
+  display: flex;
+`;
+const Box = styled.div`
+  background-color: ${props => props.bgColor};
+  width: 100px;
+  height: 100px;
+`;
+const Circle = styled(Box)`
+  background-color: ${props => props.bgColor};
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+const Btn = styled.button`
+  color: #fff;
+  background-color: green;
+  border-radius: 15px;
+  padding: 2px 5px;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Father>
+      <Box bgColor="teal"/>
+      <Circle bgColor="tomato"/>
+
+      <Btn>Login</Btn>
+      <Btn as="a" href="#">Login</Btn>
+    </Father>
   );
 }
 
