@@ -14,11 +14,10 @@ const Circle = styled(Box)`
   height: 100px;
   border-radius: 50%;
 `;
-const Btn = styled.button`
-  color: #fff;
-  background-color: green;
-  border-radius: 15px;
-  padding: 2px 5px;
+const Input = styled.input.attrs({
+  required: true
+})`
+  background-color: tomato;
 `;
 
 function App() {
@@ -27,8 +26,10 @@ function App() {
       <Box bgColor="teal"/>
       <Circle bgColor="tomato"/>
 
-      <Btn>Login</Btn>
-      <Btn as="a" href="#">Login</Btn>
+      <Input/>
+      <Input/>
+      <Input/>
+      <Input/>
     </Father>
   );
 }
