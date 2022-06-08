@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-interface Params {
+type Params = {
     coinId: string;
 }
 function Coin() {
