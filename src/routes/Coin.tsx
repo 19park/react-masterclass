@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { useMatch, useLocation, useParams, Outlet, Link } from "react-router-dom";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { fetchCoinInfo } from "../api";
 import { fetchCoinTickers } from './../api';
 
@@ -10,6 +10,7 @@ const Container = styled.div`
 `;
 const Header = styled.div`
     height: 10vh;
+    min-height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,12 +23,13 @@ const Title = styled.h1`
 const Loader = styled.span`
     text-align: center;
     display: block;
+    color: ${props => props.theme.boxColor};
 `;
 
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${props => props.theme.overviewBgColor};
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -44,6 +46,7 @@ const OverviewItem = styled.div`
 `;
 const Description = styled.p`
   margin: 20px 0px;
+  color: ${props => props.theme.boxColor};
 `;
 const Tabs = styled.div`
   display: grid;
@@ -57,7 +60,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${props => props.theme.overviewBgColor};
   padding: 7px 0px;
   border-radius: 10px;
   color: ${(props) =>
@@ -168,9 +171,11 @@ function Coin() {
     const loading = infoLoading || tickersLoading;
     return (
         <Container>
-            <Helmet>
-                <title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</title>
-            </Helmet>
+            <HelmetProvider>
+                <Helmet>
+                    <title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</title>
+                </Helmet>
+            </HelmetProvider>
             <Header>
                 <Title>
                     {state?.name ? state.name : loading ? "Loading..." : infoData?.name}

@@ -1,9 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './theme';
+import { useTheme } from "./hooks/useTheme";
+import { createContext } from "react";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
-
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -67,11 +69,22 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const AppContext = createContext({
+  toggleTheme: () => {}
+});
+
 function App() {
+  const [themeMode, toggleTheme] = useTheme();
+  const theme = themeMode === 'light' ? lightTheme : darkTheme;
+
   return (
     <>
-      <GlobalStyle />
-      <Router />
+      <AppContext.Provider value={{ toggleTheme }}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Router />
+        </ThemeProvider>
+      </AppContext.Provider>
     </>
   );
 }
