@@ -35,10 +35,10 @@ function Chart() {
                 type="candlestick"
                 series={[
                     {
-                        name: "series",
+                        name: "Price",
                         data: data?.map(v => ({
                             x: new Date(v.time_open),
-                            y: [v.open, v.high, v.low, v.close].map(v => v.toFixed(2)),
+                            y: [v.open, v.high, v.low, v.close]?.map(v => v.toFixed(2)),
                         })) ?? []
                     }
                 ]}
@@ -75,7 +75,7 @@ function Chart() {
                         axisBorder: {
                             show: false,
                         },
-                        categories: data?.map(price => price.time_close)
+                        categories: data?.map(price => price.time_close) || []
                     },
                     // fill :{
                     //     type: "gradient",

@@ -3,8 +3,8 @@ import Switch from "react-switch";
 import { AppContext } from "../App";
 
 const ThemeSwitchButton = () => {
-    const [checked, setChecked] = useState(false);
-    const { toggleTheme } = useContext(AppContext);
+    const { themeMode, toggleTheme } = useContext(AppContext);
+    const [checked, setChecked] = useState((themeMode === "dark"));
 
     const handleChange = (nextChecked: boolean) => {
         setChecked(nextChecked);

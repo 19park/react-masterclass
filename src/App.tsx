@@ -70,6 +70,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const AppContext = createContext({
+  themeMode: "dark",
   toggleTheme: () => {}
 });
 
@@ -79,7 +80,7 @@ function App() {
 
   return (
     <>
-      <AppContext.Provider value={{ toggleTheme }}>
+      <AppContext.Provider value={{ themeMode, toggleTheme }}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Router />
