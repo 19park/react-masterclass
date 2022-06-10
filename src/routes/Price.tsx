@@ -73,6 +73,11 @@ const Text = styled.h3<{ isPositive?: Boolean }>`
   font-weight: 600;
   color: ${(props) => (props.isPositive ? "lightgreen" : "red")};
 `;
+const Loader = styled.span`
+    text-align: center;
+    display: block;
+    color: ${props => props.theme.boxColor};
+`;
 
 interface PriceData {
   id: string;
@@ -129,7 +134,7 @@ function Price() {
     return (
         <Container>
             {loading ? (
-                "Loading Price..."
+                <Loader>"Loading Price..."</Loader>
             ) : (
             <>
                 <Overview>

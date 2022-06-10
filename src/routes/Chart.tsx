@@ -1,7 +1,14 @@
 import { useOutletContext } from "react-router-dom";
 import { useQuery } from 'react-query';
 import { fetchCoinHistory } from "../api";
+import styled from "styled-components";
 import ApaxChart from "react-apexcharts";
+
+const Loader = styled.span`
+    text-align: center;
+    display: block;
+    color: ${props => props.theme.boxColor};
+`;
 
 interface IChartProps {
     coinId: string;
@@ -30,7 +37,7 @@ function Chart() {
 
     return <div>
         {isLoading ? 
-            "Loading Chart..." :
+            <Loader>"Loading Chart..."</Loader> :
             <ApaxChart 
                 type="candlestick"
                 series={[
