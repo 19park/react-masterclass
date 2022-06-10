@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: ${props => props.theme.bgColor};
     color: ${props => props.theme.textColor};

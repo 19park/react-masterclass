@@ -7,13 +7,32 @@ import { fetchCoinTickers } from './../api';
 
 const Container = styled.div`
     padding: 0 20px;
+    max-width: 500px;
+    margin: 0 auto;
 `;
 const Header = styled.div`
+    position: relative;
     height: 10vh;
     min-height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+const BackButton = styled.div`
+    width: 30px;
+    height: 30px;
+    display: flex;
+    background-color: ${(props) => props.theme.bgColor};
+    border: 1px solid ${(props) => props.theme.boxColor};
+    color: ${(props) => props.theme.boxColor};
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 `;
 const Title = styled.h1`
     font-size: 48px;
@@ -177,6 +196,9 @@ function Coin() {
                 </Helmet>
             </HelmetProvider>
             <Header>
+                <BackButton>
+                    <Link to="/">&larr;</Link>
+                </BackButton>
                 <Title>
                     {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
                 </Title>
@@ -220,7 +242,7 @@ function Coin() {
                         </Tab>
                     </Tabs>
 
-                    <Outlet context={{ coinId }}/>
+                    <Outlet context={{ coinId, tickersData }}/>
                 </>
             )}
         </Container>

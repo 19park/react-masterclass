@@ -32,11 +32,14 @@ function Chart() {
         {isLoading ? 
             "Loading Chart..." :
             <ApaxChart 
-                type="line"
+                type="candlestick"
                 series={[
                     {
-                        name: "Price",
-                        data: data?.map(price => price.close) ?? []
+                        name: "series",
+                        data: data?.map(v => ({
+                            x: new Date(v.time_open),
+                            y: [v.open, v.high, v.low, v.close].map(v => v.toFixed(2)),
+                        })) ?? []
                     }
                 ]}
                 options={{
@@ -62,6 +65,7 @@ function Chart() {
                         show: false,
                     },
                     xaxis: {
+                        type: 'datetime',
                         labels: {
                             show: false,
                         },
@@ -71,17 +75,16 @@ function Chart() {
                         axisBorder: {
                             show: false,
                         },
-                        type: "datetime",
                         categories: data?.map(price => price.time_close)
                     },
-                    fill :{
-                        type: "gradient",
-                        gradient: {
-                            gradientToColors: ["#0be881"],
-                            stops: [0, 100]
-                        }
-                    },
-                    colors: ["#0fbcf9"],
+                    // fill :{
+                    //     type: "gradient",
+                    //     gradient: {
+                    //         gradientToColors: ["#0be881"],
+                    //         stops: [0, 100]
+                    //     }
+                    // },
+                    // colors: ["#0fbcf9"],
                     tooltip: {
                         y: {
                             formatter: (value) => `$ ${value.toFixed(2)}`
