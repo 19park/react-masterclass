@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-masterclass/static/js/main.0058fe69.js",
-    "index.html": "/react-masterclass/index.html",
-    "main.0058fe69.js.map": "/react-masterclass/static/js/main.0058fe69.js.map"
+    "main.js": "https://19park.github.io/react-masterclass/static/js/main.f16b0c9f.js",
+    "index.html": "https://19park.github.io/react-masterclass/index.html",
+    "main.f16b0c9f.js.map": "https://19park.github.io/react-masterclass/static/js/main.f16b0c9f.js.map"
   },
   "entrypoints": [
-    "static/js/main.0058fe69.js"
+    "static/js/main.f16b0c9f.js"
   ]
 }
