@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-masterclass/static/js/main.dd504220.js",
-    "index.html": "/react-masterclass/index.html",
-    "main.dd504220.js.map": "/react-masterclass/static/js/main.dd504220.js.map"
+    "main.js": "/react-masterclass/crypto-tracker/static/js/main.ba81adb6.js",
+    "index.html": "/react-masterclass/crypto-tracker/index.html",
+    "main.ba81adb6.js.map": "/react-masterclass/crypto-tracker/static/js/main.ba81adb6.js.map"
   },
   "entrypoints": [
-    "static/js/main.dd504220.js"
+    "static/js/main.ba81adb6.js"
   ]
 }
