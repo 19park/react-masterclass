@@ -3,6 +3,8 @@ import { useQuery } from 'react-query';
 import { fetchCoinHistory } from "../api";
 import styled from "styled-components";
 import ApaxChart from "react-apexcharts";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 const Loader = styled.span`
     text-align: center;
@@ -26,6 +28,7 @@ interface IHistorical {
 }
 
 function Chart() {
+    const { themeMode } = useContext(AppContext);
     const {coinId} = useOutletContext<IChartProps>();
     const {isLoading, data} = useQuery<IHistorical[]>(
         ["ohlcv", coinId], 
@@ -34,6 +37,7 @@ function Chart() {
             refetchInterval: 10000,
         }
     );
+    const isDark = themeMode === "dark";
 
     return <div>
         {isLoading ? 
@@ -51,7 +55,7 @@ function Chart() {
                 ]}
                 options={{
                     theme: {
-                        mode: "dark"
+                        mode: isDark ? "dark" : "light"
                     },
                     chart: {
                         width: 500,
