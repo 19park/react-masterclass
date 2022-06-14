@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import TodoList from './components/ToDoList';
+import Router from './Router';
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -69,7 +69,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <TodoList />
+      <Router />
     </>
   );
 }
